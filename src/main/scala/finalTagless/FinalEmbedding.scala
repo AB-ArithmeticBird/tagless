@@ -27,10 +27,7 @@ object FinalEmbedding {
       x=>y=>z=> if (x.value) Eval(y.value) else Eval(z.value)
   }
 
-  //5 *(7 + -(7 + ("true".length==5)?2:6))
-  def expression[R[_]](implicit s1: ExprSym[R]): R[Int] = {
-    s1.mul(s1.literal(5))(s1.add(s1.literal(7))(s1.negation(s1.add(s1.literal(7))(s1.cond(s1.literalBoolean("true".length == 5))(s1.literal(2))(s1.literal(6))))))
-  }
+
 
   // run the Eval interpreter
   def eval[T]: Eval[T] => T = _.value
